@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="modelo.Aluno">
+  <void property="cpf">
+   <int>321321</int>
+  </void>
+  <void property="data_nasc">
+   <string>321321</string>
+  </void>
+  <void property="email">
+   <string>fdsa</string>
+  </void>
+  <void property="matricula">
+   <int>1</int>
+  </void>
+  <void property="nivelacesso">
+   <int>1</int>
+  </void>
+  <void property="nome">
+   <string>fdsafaf</string>
+  </void>
+ </object>
+</java>
