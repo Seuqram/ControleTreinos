@@ -12,20 +12,11 @@ public class Aluno extends Pessoa implements Serializable{
   	int matricula;
   	int nivelacesso;*/
 	
-	/*public Aluno(String nome, String email, int cpf, String data_nasc, int matricula, int nivelacesso) {
+	public Aluno(String nome, String email, int cpf, String data_nasc, int matricula, int nivelacesso) {
 		
 		super(nome, email, cpf, data_nasc, matricula, nivelacesso);
 		
-	}*/
-	
-  	public Aluno(String nome, String email, int cpf, String data_nasc, int matricula, int nivelacesso){
-  		this.nome=nome;
-  		this.email = email;
-  		this.cpf = cpf;
-  		this.data_nasc = data_nasc;
-  		this.matricula = matricula;
-  		this.nivelacesso = nivelacesso;
-  	}
+	}
 	
 	public Aluno(){
 		
