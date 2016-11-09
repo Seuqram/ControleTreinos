@@ -28,8 +28,7 @@ public class ControleLogin {
 				break;
 			case 4:
 				JOptionPane.showMessageDialog(null, "Aluno");
-				//usuarioValido = AlunoDAO.validar(matricula, senha);
-				usuarioValido = true;
+				usuarioValido = AlunoDAO.validar(matricula, senha);
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Nível de Acesso Inválido");
@@ -39,8 +38,11 @@ public class ControleLogin {
 				//carregaBaseDeDados
 				AlunoDAO a = new AlunoDAO(); 
 				a.carregaAlunos();//NÃO ESTÁ FUNCIONANDO AINDA
+				JOptionPane.showMessageDialog(null, "Usuário Válido");
 				return true;
 			}
+			else
+				JOptionPane.showMessageDialog(null, "Usuário Inválido");
 		}
 		return false;
 	}

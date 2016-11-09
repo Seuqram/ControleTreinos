@@ -1,10 +1,16 @@
 package visao;
 
 import controle.ControleLogin;
+import modelo.Aluno;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class JanelaLogin extends JFrame{
 	/* Váriaveis */
@@ -100,6 +106,7 @@ public class JanelaLogin extends JFrame{
 		janela.setTitle("Login");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.pack();
-		janela.setVisible(true);   
+		janela.setVisible(true); 
+		
 	}   
 }

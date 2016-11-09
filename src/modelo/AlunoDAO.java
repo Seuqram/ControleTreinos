@@ -2,6 +2,9 @@ package modelo;
 
 import java.io.*;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 
@@ -10,17 +13,11 @@ public class AlunoDAO extends Aluno implements Serializable{
 	{
 		
 	}
-	public void incluiAluno(String nome, String email, int cpf, String data_nasc, int matricula){
+	public void incluiAluno(String nome, String email, int cpf, String data_nasc/*, int matricula*/){
 
-		Aluno aluno1 = new Aluno(nome + " 1", email, cpf, data_nasc, matricula);
-		Aluno aluno2 = new Aluno(nome + " 2", email, cpf, data_nasc, matricula);
-		Aluno aluno3 = new Aluno(nome + " 3", email, cpf, data_nasc, matricula);
-
-		ArrayList<Aluno> lista = new ArrayList<>();
-		lista.add(aluno1);
-		lista.add(aluno2);
-		lista.add(aluno3);
-
+		ArrayList<Aluno> listaDeAlunos = carregaAlunos();
+		Aluno novoAluno = new Aluno(nome, email, cpf, data_nasc/*, matricula*/, (41 + listaDeAlunos.size()));
+		listaDeAlunos.add(novoAluno);
 		try{
 
 			XMLEncoder encoder = null;
@@ -28,7 +25,7 @@ public class AlunoDAO extends Aluno implements Serializable{
 			try{
 
 				encoder = new XMLEncoder(new FileOutputStream("alunos.xml"));
-				encoder.writeObject(lista);
+				encoder.writeObject(listaDeAlunos);
 			} finally {
 				if (encoder!=null)
 					encoder.close();
@@ -38,20 +35,15 @@ public class AlunoDAO extends Aluno implements Serializable{
 		}
 	}
 	
-	public /*ArrayList<Aluno>*/ void carregaAlunos()
+	public static ArrayList<Aluno> carregaAlunos()
 	{
-		Aluno[] alunos = new Aluno[3];
-		System.out.println("eeeeeee");
 		try{
 			XMLDecoder decoder = null;
 			try{
 				decoder = new XMLDecoder(
 						new FileInputStream("alunos.xml"));
-				
-				alunos = (Aluno[]) decoder.readObject();//ESSA LINHA NÃO ESTÁ FUNCIONANDO
-				System.out.println("Alunos lidos: " + alunos.length);
-				for (Aluno a : alunos)
-					System.out.println(a.getNome());
+				ArrayList<Aluno> lista = (ArrayList<Aluno>) decoder.readObject();
+				return lista;
 			} finally {
 				if (decoder != null)
 					decoder.close();
@@ -59,6 +51,34 @@ public class AlunoDAO extends Aluno implements Serializable{
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		}
+		return null;
+	}
+	
+	public static boolean validar(String matriculaEntrada, String senhaEntrada)
+	{
+		boolean alunoValido = false, gambiarraFimDoWhile = false;
+		ArrayList<Aluno> listaDeAlunos= carregaAlunos();
+		/*************
+		 * GAMBIARRA *
+		 *************/
+		Aluno gambiarra = null;
+		int i = 0;
+		do{
+			gambiarra = listaDeAlunos.get(i);
+			if (Integer.parseInt(matriculaEntrada) == gambiarra.getMatricula())
+			{
+				alunoValido = true;
+				gambiarraFimDoWhile = true;
+			}
+			/******************
+			 * SUPER GAMBIARRA*
+			 ******************/
+			if (i == listaDeAlunos.size()-1)
+				gambiarraFimDoWhile = true;
+			else
+				i++;
+		}while(!gambiarraFimDoWhile);
+		return alunoValido;
 	}
 	
 }

@@ -4,57 +4,57 @@
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>321</int>
+     <int>123</int>
     </void>
     <void property="data_nasc">
-     <string>123</string>
+     <string>213</string>
     </void>
     <void property="email">
-     <string>patati@patata</string>
+     <string>afca</string>
     </void>
     <void property="matricula">
-     <int>1</int>
+     <int>41</int>
     </void>
     <void property="nome">
-     <string>patata 1</string>
+     <string>patati 1</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>321</int>
+     <int>123</int>
     </void>
     <void property="data_nasc">
-     <string>123</string>
+     <string>321</string>
     </void>
     <void property="email">
-     <string>patati@patata</string>
+     <string>pafafad</string>
     </void>
     <void property="matricula">
-     <int>1</int>
+     <int>42</int>
     </void>
     <void property="nome">
-     <string>patata 2</string>
+     <string>Patata 1</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>321</int>
+     <int>123</int>
     </void>
     <void property="data_nasc">
-     <string>123</string>
+     <string>321</string>
     </void>
     <void property="email">
-     <string>patati@patata</string>
+     <string>dfsfca</string>
     </void>
     <void property="matricula">
-     <int>1</int>
+     <int>43</int>
     </void>
     <void property="nome">
-     <string>patata 3</string>
+     <string>Patati Patata</string>
     </void>
    </object>
   </void>

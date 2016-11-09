@@ -108,7 +108,7 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 
 		if (e.getSource() == inclui){
 			AlunoDAO a = new AlunoDAO();
-			a.incluiAluno(nome.getText(), mail.getText(), Integer.parseInt(id.getText()), dataNasc.getText(), 001);
+			a.incluiAluno(nome.getText(), mail.getText(), Integer.parseInt(id.getText()), dataNasc.getText());
 			JOptionPane.showMessageDialog(null, "Aluno Incluido");
 		}
 
