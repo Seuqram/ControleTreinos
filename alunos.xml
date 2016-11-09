@@ -1,23 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_101" class="java.beans.XMLDecoder">
- <object class="modelo.Aluno">
-  <void property="cpf">
-   <int>123</int>
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="modelo.Aluno">
+    <void property="cpf">
+     <int>113456789</int>
+    </void>
+    <void property="data_nasc">
+     <string>26091987</string>
+    </void>
+    <void property="email">
+     <string>321312@</string>
+    </void>
+    <void property="matricula">
+     <int>1</int>
+    </void>
+    <void property="nome">
+     <string>Teste 1</string>
+    </void>
+   </object>
   </void>
-  <void property="data_nasc">
-   <string>456</string>
+  <void method="add">
+   <object class="modelo.Aluno">
+    <void property="cpf">
+     <int>113456789</int>
+    </void>
+    <void property="data_nasc">
+     <string>26091987</string>
+    </void>
+    <void property="email">
+     <string>321312@</string>
+    </void>
+    <void property="matricula">
+     <int>1</int>
+    </void>
+    <void property="nome">
+     <string>Teste 2</string>
+    </void>
+   </object>
   </void>
-  <void property="email">
-   <string>patati</string>
-  </void>
-  <void property="matricula">
-   <int>1</int>
-  </void>
-  <void property="nivelacesso">
-   <int>1</int>
-  </void>
-  <void property="nome">
-   <string>Teste</string>
+  <void method="add">
+   <object class="modelo.Aluno">
+    <void property="cpf">
+     <int>113456789</int>
+    </void>
+    <void property="data_nasc">
+     <string>26091987</string>
+    </void>
+    <void property="email">
+     <string>321312@</string>
+    </void>
+    <void property="matricula">
+     <int>1</int>
+    </void>
+    <void property="nome">
+     <string>Teste 3</string>
+    </void>
+   </object>
   </void>
  </object>
 </java>

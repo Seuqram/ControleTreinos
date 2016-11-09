@@ -1,4 +1,5 @@
 package modelo;
+import java.util.ArrayList;
 import java.util.Date;
 import java.io.*;
 import java.beans.XMLEncoder;
@@ -12,9 +13,9 @@ public class Aluno extends Pessoa implements Serializable{
   	int matricula;
   	int nivelacesso;*/
 	
-	public Aluno(String nome, String email, int cpf, String data_nasc, int matricula, int nivelacesso) {
+	public Aluno(String nome, String email, int cpf, String data_nasc, int matricula) {
 		
-		super(nome, email, cpf, data_nasc, matricula, nivelacesso);
+		super(nome, email, cpf, data_nasc, matricula);
 		
 	}
 	
@@ -22,10 +23,16 @@ public class Aluno extends Pessoa implements Serializable{
 		
 	}
 	
-	public void incluiAluno(String nome, String email, int cpf, String data_nasc, int matricula, int nivelacesso ){
-		Aluno aluno = new Aluno();
-		aluno = new Aluno(nome, email, cpf, data_nasc, matricula, nivelacesso);
-		System.out.println(aluno.getNome());
+	public void incluiAluno(String nome, String email, int cpf, String data_nasc, int matricula){
+		
+		Aluno aluno1 = new Aluno(nome + " 1", email, cpf, data_nasc, matricula);
+		Aluno aluno2 = new Aluno(nome + " 2", email, cpf, data_nasc, matricula);
+		Aluno aluno3 = new Aluno(nome + " 3", email, cpf, data_nasc, matricula);
+		
+		ArrayList<Aluno> lista = new ArrayList<>();
+		lista.add(aluno1);
+		lista.add(aluno2);
+		lista.add(aluno3);
 		
 		try{
 			
@@ -34,7 +41,7 @@ public class Aluno extends Pessoa implements Serializable{
 			try{
 				
 				encoder = new XMLEncoder(new FileOutputStream("alunos.xml"));
-				encoder.writeObject(aluno);
+				encoder.writeObject(lista);
 			} finally {
 				if (encoder!=null)
 					encoder.close();
@@ -43,5 +50,4 @@ public class Aluno extends Pessoa implements Serializable{
 			System.out.println(e.getMessage());
 		}
 	}
-	
 }

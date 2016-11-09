@@ -1,5 +1,6 @@
 package janelas;
 
+import controle.ControleLogin;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ public class JanelaLogin extends JFrame{
 	    public JTextField usuario ;
 	    public JPasswordField password ;
 	    public String userid, erro, asenha;
+	    private ControleLogin controleLogin;
 	    
 	   public JanelaLogin() {
 		   
@@ -77,12 +79,40 @@ public class JanelaLogin extends JFrame{
 	       
 	    	   public void actionPerformed(ActionEvent e) {
 	    		   	validar();
+	    		    //controleLogin.validar(usuario.getText(), senha.getText());
 	    	   }
 	       });
 
+	       cancela.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}
+		});
+	       
 	   }
 	   
 	   public void validar(){
+		   
+		   //controleLogin.equals(obj);
+		  
+		   if (usuario.getText().startsWith("1")){
+			   JOptionPane.showMessageDialog(null, "Recepcionista");
+		   }
+		   else if (usuario.getText().startsWith("2")){
+			   JOptionPane.showMessageDialog(null, "Fisioterapeuta");
+		   }
+		   else if (usuario.getText().startsWith("3")){
+			   JOptionPane.showMessageDialog(null, "Professor");
+		   }
+		   else if (usuario.getText().startsWith("4")){
+			   JOptionPane.showMessageDialog(null, "Aluno");
+		   }
+		   else{
+			   JOptionPane.showMessageDialog(null, "Usuário inválido!");
+		   }
 		   
 	   }
 	   

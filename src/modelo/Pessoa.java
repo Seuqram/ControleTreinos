@@ -8,7 +8,7 @@ public class Pessoa {
 	String data_nasc;
 	int cpf;
 	int matricula;
-	int nivelacesso;
+	
 	
 	public String getNome() {
 		return nome;
@@ -40,21 +40,16 @@ public class Pessoa {
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
 	}
-	public int getNivelacesso() {
-		return nivelacesso;
-	}
-	public void setNivelacesso(int nivelacesso) {
-		this.nivelacesso = nivelacesso;
-	}
 	
-	public Pessoa(String nome, String email, int cpf, String data_nasc, int matricula, int nivelacesso) {
+	
+	public Pessoa(String nome, String email, int cpf, String data_nasc, int matricula) {
 
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.data_nasc = data_nasc;
 		this.matricula = matricula;
-		this.nivelacesso = nivelacesso;
+		
 	}
 	public Pessoa() {
 		// TODO Auto-generated constructor stub
