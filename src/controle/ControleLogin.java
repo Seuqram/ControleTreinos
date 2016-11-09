@@ -1,21 +1,47 @@
 package controle;
 
-import modelo.Pessoa;
-import modelo.PessoaDAO;
+import javax.swing.JOptionPane;
+
+import modelo.AlunoDAO;
 
 public class ControleLogin {
-	//private Pessoa pessoa;
-	private PessoaDAO pessoaDAO;
-	
-	
-	public boolean validar(String matricula, String senha)
+	public static boolean validar(String matricula, String senha)
 	{
-		//1) pessoaDAO.validar(matricula, senha);
-		
-		//2) ArrayList<Pessoa> todasPessoas = pessoaDOA.retornaPessoas();
-		
-		// Realizar a busca
-		
+		int nivelAcesso = 0;
+		boolean usuarioValido = false;
+		if (!matricula.isEmpty())
+		{
+			nivelAcesso = Character.getNumericValue(matricula.charAt(0));
+			switch(nivelAcesso)
+			{
+			case 1:
+				JOptionPane.showMessageDialog(null, "Recepcionista");
+				//usuarioValido = RecepcionistaDAO.validar(matricula, senha);
+				break;
+			case 2:
+				JOptionPane.showMessageDialog(null, "Fisioterapeuta");
+				//usuarioValido = FisioterapeutaDAO.validar(matricula, senha);
+				break;
+			case 3:
+				JOptionPane.showMessageDialog(null, "Professor");
+				//usuarioValido = ProfessorDAO.validar(matricula, senha);
+				break;
+			case 4:
+				JOptionPane.showMessageDialog(null, "Aluno");
+				//usuarioValido = AlunoDAO.validar(matricula, senha);
+				usuarioValido = true;
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Nível de Acesso Inválido");
+				return false;
+			}
+			if (usuarioValido){
+				//carregaBaseDeDados
+				AlunoDAO a = new AlunoDAO(); 
+				a.carregaAlunos();//NÃO ESTÁ FUNCIONANDO AINDA
+				return true;
+			}
+		}
 		return false;
 	}
 }

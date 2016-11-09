@@ -1,4 +1,4 @@
-package janelas;
+package visao;
 
 import java.awt.EventQueue;
 

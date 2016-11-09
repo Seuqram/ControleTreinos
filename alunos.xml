@@ -4,57 +4,57 @@
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>113456789</int>
+     <int>321</int>
     </void>
     <void property="data_nasc">
-     <string>26091987</string>
+     <string>123</string>
     </void>
     <void property="email">
-     <string>321312@</string>
+     <string>patati@patata</string>
     </void>
     <void property="matricula">
      <int>1</int>
     </void>
     <void property="nome">
-     <string>Teste 1</string>
+     <string>patata 1</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>113456789</int>
+     <int>321</int>
     </void>
     <void property="data_nasc">
-     <string>26091987</string>
+     <string>123</string>
     </void>
     <void property="email">
-     <string>321312@</string>
+     <string>patati@patata</string>
     </void>
     <void property="matricula">
      <int>1</int>
     </void>
     <void property="nome">
-     <string>Teste 2</string>
+     <string>patata 2</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>113456789</int>
+     <int>321</int>
     </void>
     <void property="data_nasc">
-     <string>26091987</string>
+     <string>123</string>
     </void>
     <void property="email">
-     <string>321312@</string>
+     <string>patati@patata</string>
     </void>
     <void property="matricula">
      <int>1</int>
     </void>
     <void property="nome">
-     <string>Teste 3</string>
+     <string>patata 3</string>
     </void>
    </object>
   </void>
