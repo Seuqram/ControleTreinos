@@ -12,15 +12,14 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class JanelaLogin extends JFrame{
-	/* Váriaveis */
-	static JanelaLogin janela ;
+public class Login extends JFrame{
+	Login janela ;
 	public JTextField usuario ;
 	public JPasswordField password ;
 	public String userid, erro, asenha;
 	private ControleLogin controleLogin;
 
-	public JanelaLogin() {
+	public Login() {
 
 		/* Constroi a tela de LOGIN com gridBaglayout */
 		Container contantPane = getContentPane();
@@ -80,12 +79,24 @@ public class JanelaLogin extends JFrame{
 		gridbag.setConstraints(cancela, c);
 		getContentPane().add(cancela);
 
+		this.setTitle("Login");
+		this.setVisible(true);
+		this.pack();
+
 		/* Funcao de entrar  */
 		entra.addActionListener( new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				//validar();
-				ControleLogin.validar(usuario.getText(), senha.getText());
+				boolean loginValido = false;
+				String matricula = usuario.getText();
+				loginValido = ControleLogin.validar(matricula, senha.getText());
+				if (loginValido)
+				{
+					JOptionPane.showMessageDialog(null, "Logado com sucesso");
+					ControleLogin.setNivelDeAcesso(matricula);
+					visibilidade(false);
+				}else
+					JOptionPane.showMessageDialog(null, "Problema no Login");
 			}
 		});
 
@@ -100,13 +111,13 @@ public class JanelaLogin extends JFrame{
 
 	}
 
-	public static void main(String[] args) {
-		/* Chama o programa */
-		janela = new JanelaLogin() ;
-		janela.setTitle("Login");
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		janela.pack();
-		janela.setVisible(true); 
-		
-	}   
+	public boolean visivel()
+	{
+		return this.isVisible();
+	}
+
+	public void visibilidade(boolean visibilidade)
+	{
+		this.setVisible(visibilidade);
+	}
 }

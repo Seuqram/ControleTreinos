@@ -13,9 +13,9 @@ public class AlunoDAO extends Aluno implements Serializable{
 	{
 		
 	}
-	public void incluiAluno(String nome, String email, int cpf, String data_nasc/*, int matricula*/){
-
+	public boolean cadastraAluno(String nome, String email, int cpf, String data_nasc/*, int matricula*/){
 		ArrayList<Aluno> listaDeAlunos = carregaAlunos();
+		System.out.println("eeee");
 		Aluno novoAluno = new Aluno(nome, email, cpf, data_nasc/*, matricula*/, (41 + listaDeAlunos.size()));
 		listaDeAlunos.add(novoAluno);
 		try{
@@ -27,12 +27,15 @@ public class AlunoDAO extends Aluno implements Serializable{
 				encoder = new XMLEncoder(new FileOutputStream("alunos.xml"));
 				encoder.writeObject(listaDeAlunos);
 			} finally {
-				if (encoder!=null)
+				if (encoder!=null){
 					encoder.close();
+					return true;
+				}
 			}
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		}
+		return false;
 	}
 	
 	public static ArrayList<Aluno> carregaAlunos()
@@ -51,7 +54,7 @@ public class AlunoDAO extends Aluno implements Serializable{
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		}
-		return null;
+		return new ArrayList<Aluno>();
 	}
 	
 	public static boolean validar(String matriculaEntrada, String senhaEntrada)

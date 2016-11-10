@@ -1,5 +1,7 @@
 package visao;
-import modelo.AlunoDAO;
+
+import controle.ControleCadastroDeAluno;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -107,11 +109,37 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == inclui){
-			AlunoDAO a = new AlunoDAO();
-			a.incluiAluno(nome.getText(), mail.getText(), Integer.parseInt(id.getText()), dataNasc.getText());
-			JOptionPane.showMessageDialog(null, "Aluno Incluido");
+			if(camposPreenchidos())
+			{
+				if (ControleCadastroDeAluno.cadastrarAluno(nome.getText(), mail.getText(), id.getText(), dataNasc.getText()))
+				{
+					JOptionPane.showMessageDialog(null, "Aluno Incluido");
+					limpaCampos();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Problema na Inclusão do Aluno");
+			}else
+				JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos");			
 		}
 
+	}
+	
+	private void limpaCampos()
+	{
+		nome.setText("");
+		mail.setText("");
+		id.setText("");
+		dataNasc.setText("");
+	}
+	
+	private boolean camposPreenchidos()
+	{ 
+		if(!nome.getText().equals(""))
+				if (!mail.getText().equals("")) 
+					if(!id.getText().equals(""))
+						if (!dataNasc.getText().equals(""))
+								return true;
+		return false;
 	}
 
 	public static void main(String[] args) {
