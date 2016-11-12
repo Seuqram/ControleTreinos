@@ -19,7 +19,6 @@ public class Login extends JFrame{
 	public JTextField usuario ;
 	public JPasswordField password ;
 	public String userid, erro, asenha;
-	private ControleLogin controleLogin;
 
 	public Login() {
 
@@ -85,19 +84,18 @@ public class Login extends JFrame{
 		this.setVisible(true);
 		this.pack();
 
-		/* Funcao de entrar  */
+		/* Função Login*/
 		entra.addActionListener( new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				boolean loginValido = false;
 				String matricula = usuario.getText();
-				loginValido = ControleLogin.validar(matricula, senha.getText());
-				if (loginValido)
+				if (ControleLogin.validaLogin(matricula, senha.getText()))
 				{
 					JOptionPane.showMessageDialog(null, "Logado com sucesso");
 					ControleLogin.setNivelDeAcesso(matricula);
-					visibilidade(false);
-					ControlePrincipal.visbilidadeTelaPrincipal(true);
+					setVisibilidade(false);
+					ControleLogin.carregaBaseDeDados();
+					ControleLogin.inicializaTelaPrincipal();
 				}else
 					JOptionPane.showMessageDialog(null, "Problema no Login");
 			}
@@ -114,12 +112,7 @@ public class Login extends JFrame{
 
 	}
 
-	public boolean visivel()
-	{
-		return this.isVisible();
-	}
-
-	public void visibilidade(boolean visibilidade)
+	public void setVisibilidade(boolean visibilidade)
 	{
 		this.setVisible(visibilidade);
 	}

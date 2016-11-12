@@ -8,4 +8,9 @@ public class ControleCadastroDeAluno {
 		AlunoDAO novoAluno = new AlunoDAO();
 		return novoAluno.cadastraAluno(nome, email, Integer.parseInt(cpf), dataDeNascimento);
 	}
+	
+	public static void setVisibilidadeTelaPrincipal(boolean visibilidade)
+	{
+		ControlePrincipal.setVisibilidade(visibilidade);
+	}
 }

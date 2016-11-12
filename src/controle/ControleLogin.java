@@ -6,7 +6,7 @@ import modelo.AlunoDAO;
 
 public class ControleLogin {
 	
-	public static boolean validar(String matricula, String senha)
+	public static boolean validaLogin(String matricula, String senha)
 	{
 		int nivelAcesso = 0;
 		boolean usuarioValido = false;
@@ -16,11 +16,9 @@ public class ControleLogin {
 			switch(nivelAcesso)
 			{
 			case 1:
-				//JOptionPane.showMessageDialog(null, "Recepcionista");
 				//usuarioValido = RecepcionistaDAO.validar(matricula, senha);
 				break;
 			case 2:
-				//JOptionPane.showMessageDialog(null, "Fisioterapeuta");
 				//usuarioValido = FisioterapeutaDAO.validar(matricula, senha);
 				break;
 			case 3:
@@ -32,14 +30,11 @@ public class ControleLogin {
 				usuarioValido = AlunoDAO.validar(matricula, senha);
 				break;
 			default:
-				//JOptionPane.showMessageDialog(null, "Nível de Acesso Inválido");
+				JOptionPane.showMessageDialog(null, "Erro no Login");
 				return false;
 			}
-			if (usuarioValido){
-				//JOptionPane.showMessageDialog(null, "Usuário Válido");
-				
+			if (usuarioValido)
 				return true;
-			}
 			else
 				JOptionPane.showMessageDialog(null, "Usuário Inválido");
 		}
@@ -51,8 +46,13 @@ public class ControleLogin {
 		ControleSessao.setNivelDeAcesso(Character.getNumericValue(matricula.charAt(0)));
 	}
 	
-	public static int getNivelDeAcesso()
+	public static void inicializaTelaPrincipal()
 	{
-		return ControleSessao.getNivelDeAcesso();
+		ControlePrincipal.inicializaTelaPrincipal();
+	}
+	
+	public static void carregaBaseDeDados()
+	{
+		ControleSessao.carregaBaseDeDados();
 	}
 }

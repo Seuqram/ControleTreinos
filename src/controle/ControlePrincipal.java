@@ -3,12 +3,18 @@ package controle;
 import visao.Principal;
 
 public class ControlePrincipal {
-	public static int carregaNivelDeAcesso(){
+	public static int getNivelDeAcesso(){
 		return ControleSessao.getNivelDeAcesso();
 	}
 	
-	public static void visbilidadeTelaPrincipal(boolean visibilidade)
+	public static void setVisibilidade(boolean visibilidade)
 	{
-		Principal.mudaVisibilidade(visibilidade);
+		Principal.setVisibilidade(visibilidade);
+	}
+	
+	public static void inicializaTelaPrincipal()
+	{
+		Principal.setVisibilidade(true);
+		Principal.setInterface();
 	}
 }

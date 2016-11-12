@@ -9,14 +9,21 @@ import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 
 public class AlunoDAO extends Aluno implements Serializable{
+	private static ArrayList<Aluno> listaDeAlunos = new ArrayList<>();
 	public AlunoDAO()
 	{
-		
 	}
-	public boolean cadastraAluno(String nome, String email, int cpf, String data_nasc/*, int matricula*/){
-		ArrayList<Aluno> listaDeAlunos = carregaAlunos();
-		System.out.println("eeee");
-		Aluno novoAluno = new Aluno(nome, email, cpf, data_nasc/*, matricula*/, (41 + listaDeAlunos.size()));
+	
+	private static int geraMatricula()
+	{
+		String matricula = String.valueOf(listaDeAlunos.size() + 1	);
+		matricula =  '4' + matricula;
+		return (Integer.parseInt(matricula));
+	}
+	
+	public boolean cadastraAluno(String nome, String email, int cpf, String data_nasc){
+		carregaAlunos();
+		Aluno novoAluno = new Aluno(nome, email, cpf, data_nasc, geraMatricula());
 		listaDeAlunos.add(novoAluno);
 		try{
 
@@ -38,7 +45,7 @@ public class AlunoDAO extends Aluno implements Serializable{
 		return false;
 	}
 	
-	public static ArrayList<Aluno> carregaAlunos()
+	public static void carregaAlunos()
 	{
 		try{
 			XMLDecoder decoder = null;
@@ -46,7 +53,7 @@ public class AlunoDAO extends Aluno implements Serializable{
 				decoder = new XMLDecoder(
 						new FileInputStream("alunos.xml"));
 				ArrayList<Aluno> lista = (ArrayList<Aluno>) decoder.readObject();
-				return lista;
+				listaDeAlunos = lista;
 			} finally {
 				if (decoder != null)
 					decoder.close();
@@ -54,33 +61,20 @@ public class AlunoDAO extends Aluno implements Serializable{
 		} catch (IOException e){
 			System.out.println(e.getMessage());
 		}
-		return new ArrayList<Aluno>();
 	}
 	
 	public static boolean validar(String matriculaEntrada, String senhaEntrada)
 	{
-		boolean alunoValido = false, gambiarraFimDoWhile = false;
-		ArrayList<Aluno> listaDeAlunos= carregaAlunos();
-		/*************
-		 * GAMBIARRA *
-		 *************/
-		Aluno gambiarra = null;
-		int i = 0;
-		do{
-			gambiarra = listaDeAlunos.get(i);
-			if (Integer.parseInt(matriculaEntrada) == gambiarra.getMatricula())
+		boolean alunoValido = false;
+		Aluno alunoEntrado = null;
+		for (int i = 0; i < listaDeAlunos.size()-1; i++){
+			alunoEntrado = listaDeAlunos.get(i);
+			if (Integer.parseInt(matriculaEntrada) == alunoEntrado.getMatricula())
 			{
 				alunoValido = true;
-				gambiarraFimDoWhile = true;
+				break;
 			}
-			/******************
-			 * SUPER GAMBIARRA*
-			 ******************/
-			if (i == listaDeAlunos.size()-1)
-				gambiarraFimDoWhile = true;
-			else
-				i++;
-		}while(!gambiarraFimDoWhile);
+		}
 		return alunoValido;
 	}
 	

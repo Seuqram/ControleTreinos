@@ -4,76 +4,57 @@
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>2131</int>
+     <int>2313</int>
     </void>
     <void property="data_nasc">
-     <string>321321</string>
+     <string>321312</string>
     </void>
     <void property="email">
-     <string>fdafa</string>
+     <string>3213</string>
     </void>
     <void property="matricula">
      <int>41</int>
     </void>
     <void property="nome">
-     <string>dsfa</string>
+     <string>dfasdfad</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>1</int>
+     <int>213123</int>
     </void>
     <void property="data_nasc">
-     <string>a</string>
+     <string>21321321</string>
     </void>
     <void property="email">
-     <string>a</string>
+     <string>32132131</string>
     </void>
     <void property="matricula">
      <int>42</int>
     </void>
     <void property="nome">
-     <string>a</string>
+     <string>fafdaafa</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
     <void property="cpf">
-     <int>123</int>
+     <int>132</int>
     </void>
     <void property="data_nasc">
-     <string>123</string>
+     <string>3213</string>
     </void>
     <void property="email">
-     <string>asdsdf</string>
+     <string>231</string>
     </void>
     <void property="matricula">
      <int>43</int>
     </void>
     <void property="nome">
-     <string>teste</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="modelo.Aluno">
-    <void property="cpf">
-     <int>231321</int>
-    </void>
-    <void property="data_nasc">
-     <string>2321321</string>
-    </void>
-    <void property="email">
-     <string>fldksmjfklcas</string>
-    </void>
-    <void property="matricula">
-     <int>44</int>
-    </void>
-    <void property="nome">
-     <string>FDSAJFKLASJFKLAS</string>
+     <string>kfdshfaf</string>
     </void>
    </object>
   </void>

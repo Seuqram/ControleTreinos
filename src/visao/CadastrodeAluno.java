@@ -1,7 +1,6 @@
 package visao;
 
 import controle.ControleCadastroDeAluno;
-import controle.ControlePrincipal;
 
 import javax.swing.*;
 import java.awt.*;
@@ -109,13 +108,13 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ControlePrincipal.visbilidadeTelaPrincipal(true);
-				visibilidade(false);
+				ControleCadastroDeAluno.setVisibilidadeTelaPrincipal(true);
+				setVisibilidade(false);
 			}
 		});
 	}
 	
-	public void visibilidade(boolean visibilidade)
+	public void setVisibilidade(boolean visibilidade)
 	{
 		this.setVisible(visibilidade);
 	}
@@ -136,10 +135,7 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 			}else
 				JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos");			
 		}
-
 	}
-	
-	
 	
 	private void limpaCampos()
 	{
@@ -161,15 +157,11 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 
 	public static void main(String[] args) {
 		/* Chama o programa */
-
 		janela = new CadastrodeAluno() ;
 		janela.setTitle("Cadastro de Aluno");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setSize(500, 500);
-		//janela.pack();
-		janela.setVisible(true);  
-
-	}   
-
+		janela.setVisible(true);
+	}
 }
 
