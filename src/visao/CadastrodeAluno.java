@@ -1,6 +1,7 @@
 package visao;
 
 import controle.ControleCadastroDeAluno;
+import controle.ControlePrincipal;
 
 import javax.swing.*;
 import java.awt.*;
@@ -103,6 +104,20 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 		getContentPane().add(cancela);
 
 		inclui.addActionListener(this);
+		
+		cancela.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControlePrincipal.visbilidadeTelaPrincipal(true);
+				visibilidade(false);
+			}
+		});
+	}
+	
+	public void visibilidade(boolean visibilidade)
+	{
+		this.setVisible(visibilidade);
 	}
 
 	@Override
@@ -123,6 +138,8 @@ public class CadastrodeAluno extends JFrame implements ActionListener{
 		}
 
 	}
+	
+	
 	
 	private void limpaCampos()
 	{

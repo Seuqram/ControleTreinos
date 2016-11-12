@@ -22,7 +22,8 @@ import javax.swing.SwingConstants;
 
 public class Principal {
 
-	private JFrame frame;
+	private static JFrame frame;
+	static Principal telaPrincipal = new Principal();
 
 	/**
 	 * Launch the application.
@@ -32,8 +33,8 @@ public class Principal {
 		/*telaDeLogin.setTitle("Login");
 		telaDeLogin.pack();
 		telaDeLogin.setVisible(true);*/
-		Principal telaPrincipal = new Principal();
-		telaPrincipal.mudaVisibilidade(true);
+		
+		Principal.mudaVisibilidade(false);
 		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -59,7 +60,7 @@ public class Principal {
 		initialize();
 	}
 	
-	public void mudaVisibilidade(boolean visivel)
+	public static void mudaVisibilidade(boolean visivel)
 	{
 		frame.setVisible(visivel);
 	}

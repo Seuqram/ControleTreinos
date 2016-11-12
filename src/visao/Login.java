@@ -1,6 +1,8 @@
 package visao;
 
 import controle.ControleLogin;
+import controle.ControlePrincipal;
+import visao.Principal;
 import modelo.Aluno;
 
 import javax.swing.*;
@@ -95,6 +97,7 @@ public class Login extends JFrame{
 					JOptionPane.showMessageDialog(null, "Logado com sucesso");
 					ControleLogin.setNivelDeAcesso(matricula);
 					visibilidade(false);
+					ControlePrincipal.visbilidadeTelaPrincipal(true);
 				}else
 					JOptionPane.showMessageDialog(null, "Problema no Login");
 			}
@@ -120,4 +123,6 @@ public class Login extends JFrame{
 	{
 		this.setVisible(visibilidade);
 	}
+	
+	
 }

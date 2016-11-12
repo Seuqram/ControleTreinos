@@ -39,5 +39,43 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="modelo.Aluno">
+    <void property="cpf">
+     <int>123</int>
+    </void>
+    <void property="data_nasc">
+     <string>123</string>
+    </void>
+    <void property="email">
+     <string>asdsdf</string>
+    </void>
+    <void property="matricula">
+     <int>43</int>
+    </void>
+    <void property="nome">
+     <string>teste</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="modelo.Aluno">
+    <void property="cpf">
+     <int>231321</int>
+    </void>
+    <void property="data_nasc">
+     <string>2321321</string>
+    </void>
+    <void property="email">
+     <string>fldksmjfklcas</string>
+    </void>
+    <void property="matricula">
+     <int>44</int>
+    </void>
+    <void property="nome">
+     <string>FDSAJFKLASJFKLAS</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>
