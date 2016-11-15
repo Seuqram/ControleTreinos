@@ -65,6 +65,7 @@ public class AlunoDAO extends Aluno implements Serializable{
 	
 	public static boolean validar(String matriculaEntrada, String senhaEntrada)
 	{
+		carregaAlunos();
 		boolean alunoValido = false;
 		Aluno alunoEntrado = null;
 		for (int i = 0; i < listaDeAlunos.size()-1; i++){
