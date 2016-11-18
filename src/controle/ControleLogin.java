@@ -1,10 +1,10 @@
 package controle;
 
-import javax.swing.JOptionPane;
-
 import modelo.AlunoDAO;
 
 public class ControleLogin {
+	
+	static String usuarioLogado = null;
 	
 	public static boolean validaLogin(String matricula, String senha)
 	{
@@ -16,13 +16,15 @@ public class ControleLogin {
 			switch(nivelAcesso)
 			{
 			case 1:
+				usuarioValido = true; //PARA TESTES
 				//usuarioValido = RecepcionistaDAO.validar(matricula, senha);
 				break;
 			case 2:
+				usuarioValido = true; //PARA TESTES
 				//usuarioValido = FisioterapeutaDAO.validar(matricula, senha);
 				break;
 			case 3:
-				//JOptionPane.showMessageDialog(null, "Professor");
+				usuarioValido = true; //PARA TESTES
 				//usuarioValido = ProfessorDAO.validar(matricula, senha);
 				break;
 			case 4:
@@ -30,15 +32,23 @@ public class ControleLogin {
 				usuarioValido = AlunoDAO.validar(matricula, senha);
 				break;
 			default:
-				JOptionPane.showMessageDialog(null, "Erro no Login");
 				return false;
 			}
 			if (usuarioValido)
 				return true;
-			else
-				JOptionPane.showMessageDialog(null, "Usuário Inválido");
 		}
 		return false;
+	}
+	
+	public static void realizaProcedimentosLogin(String matricula){
+		setNivelDeAcesso(matricula);
+		setUsuarioLogado(matricula);
+		carregaBaseDeDados();
+		inicializaTelaPrincipal();
+	}
+	
+	public static void setUsuarioLogado(String matricula){
+		usuarioLogado = matricula;
 	}
 	
 	public static void setNivelDeAcesso(String matricula)

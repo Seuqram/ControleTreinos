@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="modelo.Avaliacao">
+    <void property="altura">
+     <float>3.0</float>
+    </void>
+    <void property="dataDeCadastro">
+     <string>17/11/2016</string>
+    </void>
+    <void property="idade">
+     <int>3</int>
+    </void>
+    <void property="medida">
+     <object class="modelo.Medidas">
+      <void property="bracoDireito">
+       <float>3.0</float>
+      </void>
+      <void property="bracoEsquerdo">
+       <float>3.0</float>
+      </void>
+      <void property="coxaDireita">
+       <float>3.0</float>
+      </void>
+      <void property="coxaEsquerda">
+       <float>3.0</float>
+      </void>
+      <void property="peito">
+       <float>3.0</float>
+      </void>
+      <void property="percentualDeGordura">
+       <float>3.0</float>
+      </void>
+     </object>
+    </void>
+    <void property="nomeDoAluno">
+     <string>dfasdfad</string>
+    </void>
+    <void property="objetivo">
+     <string>dfasdfad</string>
+    </void>
+    <void property="peso">
+     <float>3.0</float>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="modelo.Avaliacao">
+    <void property="altura">
+     <float>4.0</float>
+    </void>
+    <void property="dataDeCadastro">
+     <string>17/11/2016</string>
+    </void>
+    <void property="idade">
+     <int>3</int>
+    </void>
+    <void property="medida">
+     <object class="modelo.Medidas">
+      <void property="bracoDireito">
+       <float>3.0</float>
+      </void>
+      <void property="bracoEsquerdo">
+       <float>3.0</float>
+      </void>
+      <void property="coxaDireita">
+       <float>4.0</float>
+      </void>
+      <void property="coxaEsquerda">
+       <float>4.0</float>
+      </void>
+      <void property="peito">
+       <float>4.0</float>
+      </void>
+      <void property="percentualDeGordura">
+       <float>4.0</float>
+      </void>
+     </object>
+    </void>
+    <void property="nomeDoAluno">
+     <string>dfasdfad</string>
+    </void>
+    <void property="objetivo">
+     <string>dfasdfad</string>
+    </void>
+    <void property="peso">
+     <float>4.0</float>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

@@ -1,14 +1,16 @@
 package visao;
-
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.ControleCadastrodeAvaliacao;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -17,19 +19,24 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+@SuppressWarnings("serial")
 public class CadastrodeAvaliacao extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField bracoDireitoTextField;
+	private JTextField bracoEsquerdoTextField;
+	private JTextField coxaDireitaTextField;
+	private JTextField coxaEsquerdaTextField;
+	private JTextField peitoTextField;
+	private JTextField percentualDeGorduraTextField;
+	private JLabel idadeTextField;
+	private JTextField pesoTextField;
+	private JTextField alturaTextField;
 
 	/**
 	 * Launch the application.
@@ -46,7 +53,6 @@ public class CadastrodeAvaliacao extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -57,77 +63,85 @@ public class CadastrodeAvaliacao extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblCadastroDeAvaliao = new JLabel("Cadastro de Avalia\u00E7\u00E3o F\u00EDsica");
-		lblCadastroDeAvaliao.setFont(new Font("Tahoma", Font.BOLD, 15));
+		JLabel cadastroDeAvaliacaoLabel = new JLabel("Cadastro de Avalia\u00E7\u00E3o F\u00EDsica");
+		cadastroDeAvaliacaoLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		JLabel idadeLabel = new JLabel("Idade");
+		idadeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel pesoLabel = new JLabel("Peso");
+		pesoLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel alturaLabel = new JLabel("Altura");
+		JLabel alunoLabel = new JLabel("Aluno");
+		JLabel avaliadorLabel = new JLabel("Avaliador");
+		JLabel bracoDireitoLabel = new JLabel("Bra\u00E7o Direito");
+		JLabel bracoEsquerdoLabel = new JLabel("Bra\u00E7o Esquerdo");
+		JLabel coxaDireitaLabel = new JLabel("Coxa Direita");
+		JLabel coxaEsquerdaLabel = new JLabel("Coxa Esquerda");
+		JLabel peitoLabel = new JLabel("Peito");
+		peitoLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel gorduraLabel = new JLabel("% Gordura");
+		gorduraLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		idadeTextField = new JLabel();		
 		
-		JComboBox comboBox = new JComboBox();
+		JLabel objetivoLabel = new JLabel("Objetivo");
+		JComboBox alunosComboBox = new JComboBox(ControleCadastrodeAvaliacao.getAlunos());
+		JComboBox avaliadorComboBox = new JComboBox();
+		JComboBox objetivoComboBox = new JComboBox(ControleCadastrodeAvaliacao.getAlunos());
 		
-		JLabel lblIdade = new JLabel("Idade");
-		lblIdade.setHorizontalAlignment(SwingConstants.RIGHT);
-		
-		JLabel lblPeso = new JLabel("Peso");
-		lblPeso.setHorizontalAlignment(SwingConstants.RIGHT);
-		
-		JLabel lblAltura = new JLabel("Altura");
-		
-		JLabel lblAluno = new JLabel("Aluno");
-		
-		JLabel lblAvaliador = new JLabel("Avaliador");
-		
-		JComboBox comboBox_1 = new JComboBox();
-		
-		JLabel lblObjetivo = new JLabel("Objetivo");
-		
-		JComboBox comboBox_2 = new JComboBox();
+		idadeTextField.setText(ControleCadastrodeAvaliacao.getIdadeAluno(alunosComboBox.getSelectedItem().toString()));
 		
 		JTextPane textPane = new JTextPane();
 		
 		JSeparator separator = new JSeparator();
 		
-		JLabel lblBraoDireito = new JLabel("Bra\u00E7o Direito");
+		bracoDireitoTextField = new JTextField();
+		bracoDireitoTextField.setColumns(10);
+		bracoEsquerdoTextField = new JTextField();
+		bracoEsquerdoTextField.setColumns(10);
+		coxaDireitaTextField = new JTextField();
+		coxaDireitaTextField.setColumns(10);
+		coxaEsquerdaTextField = new JTextField();
+		coxaEsquerdaTextField.setColumns(10);
+		peitoTextField = new JTextField();
+		peitoTextField.setColumns(10);
+		percentualDeGorduraTextField = new JTextField();
+		percentualDeGorduraTextField.setColumns(10);
+		pesoTextField = new JTextField();
+		pesoTextField.setColumns(10);
+		alturaTextField = new JTextField();
+		alturaTextField.setColumns(10);
 		
-		JLabel lblBraoEsquerdo = new JLabel("Bra\u00E7o Esquerdo");
+		JButton salvarButton = new JButton("Salvar");
+		JButton cancelarButton = new JButton("Cancelar");
 		
-		JLabel lblCoxaDireita = new JLabel("Coxa Direita");
+		alunosComboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				idadeTextField.setText(ControleCadastrodeAvaliacao.getIdadeAluno(alunosComboBox.getSelectedItem().toString()));
+			}
+		});
 		
-		JLabel lblCoxaEsquerda = new JLabel("Coxa Esquerda");
+		salvarButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DateTimeFormatter dataDeHoje = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				LocalDateTime now = LocalDateTime.now();
+				JOptionPane.showMessageDialog(null, dataDeHoje.format(now));
+				ControleCadastrodeAvaliacao.cadastraAvaliacao(Float.parseFloat(bracoDireitoTextField.getText()),
+							Float.parseFloat(bracoEsquerdoTextField.getText()), 
+							Float.parseFloat(coxaDireitaTextField.getText()),
+							Float.parseFloat(coxaEsquerdaTextField.getText()),
+							Float.parseFloat(peitoTextField.getText()),
+							Float.parseFloat(percentualDeGorduraTextField.getText()),
+							objetivoComboBox.getSelectedItem().toString(),
+							alunosComboBox.getSelectedItem().toString(),
+							dataDeHoje.format(now),
+							Integer.parseInt(idadeTextField.getText()),
+							Float.parseFloat(pesoTextField.getText()),
+							Float.parseFloat(alturaTextField.getText())
+							);
+			}
+		});
 		
-		JLabel lblPeito = new JLabel("Peito");
-		lblPeito.setHorizontalAlignment(SwingConstants.RIGHT);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		
-		JLabel lblGordura = new JLabel("% Gordura");
-		lblGordura.setHorizontalAlignment(SwingConstants.RIGHT);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Salvar");
-		
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -139,23 +153,23 @@ public class CadastrodeAvaliacao extends JFrame {
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addComponent(lblAvaliador)
+											.addComponent(avaliadorLabel)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(comboBox_1, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+											.addComponent(avaliadorComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addComponent(lblAluno)
+											.addComponent(alunoLabel)
 											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
+											.addComponent(alunosComboBox, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
 										.addGroup(gl_contentPane.createSequentialGroup()
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblPeso)
-												.addComponent(lblIdade)
-												.addComponent(lblAltura))
+												.addComponent(pesoLabel)
+												.addComponent(idadeLabel)
+												.addComponent(alturaLabel))
 											.addPreferredGap(ComponentPlacement.RELATED)
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textField, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))))
+												.addComponent(alturaTextField, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+												.addComponent(pesoTextField, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+												.addComponent(idadeTextField, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))))
 									.addGap(75)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_contentPane.createSequentialGroup()
@@ -163,105 +177,107 @@ public class CadastrodeAvaliacao extends JFrame {
 											.addPreferredGap(ComponentPlacement.RELATED)
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 												.addComponent(separator, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblBraoDireito)))
-										.addComponent(lblCoxaDireita, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblBraoEsquerdo)
-										.addComponent(lblCoxaEsquerda)
-										.addComponent(lblPeito, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+												.addComponent(bracoDireitoLabel)))
+										.addComponent(coxaDireitaLabel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+										.addComponent(bracoEsquerdoLabel)
+										.addComponent(coxaEsquerdaLabel)
+										.addComponent(peitoLabel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
 								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addComponent(lblObjetivo)
+											.addComponent(objetivoLabel)
 											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
+											.addComponent(objetivoComboBox, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-											.addComponent(btnNewButton)
+											.addComponent(salvarButton)
 											.addGap(45)))
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblGordura, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+										.addComponent(gorduraLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
 										.addGroup(gl_contentPane.createSequentialGroup()
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnNewButton_1)))
+											.addComponent(cancelarButton)))
 									.addGap(2)))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(peitoTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+								.addComponent(coxaEsquerdaTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+								.addComponent(coxaDireitaTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+								.addComponent(bracoEsquerdoTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+								.addComponent(bracoDireitoTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+								.addComponent(percentualDeGorduraTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(111)
-							.addComponent(lblCadastroDeAvaliao)))
+							.addComponent(cadastroDeAvaliacaoLabel)))
 					.addContainerGap(79, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblCadastroDeAvaliao)
+					.addComponent(cadastroDeAvaliacaoLabel)
 					.addGap(27)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblAluno)
-									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(lblBraoDireito))
+									.addComponent(alunoLabel)
+									.addComponent(alunosComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(bracoDireitoTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(bracoDireitoLabel))
 								.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(18)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblIdade)
-										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(idadeLabel)
+										.addComponent(idadeTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblPeso)
-										.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(pesoLabel)
+										.addComponent(pesoTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblAltura)
-										.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(alturaLabel)
+										.addComponent(alturaTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addGap(21)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblAvaliador)
-										.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(avaliadorLabel)
+										.addComponent(avaliadorComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblObjetivo)
-										.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+										.addComponent(objetivoLabel)
+										.addComponent(objetivoComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblBraoEsquerdo)
-										.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(bracoEsquerdoLabel)
+										.addComponent(bracoEsquerdoTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblCoxaDireita)
-										.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(coxaDireitaLabel)
+										.addComponent(coxaDireitaTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblCoxaEsquerda)
-										.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(coxaEsquerdaLabel)
+										.addComponent(coxaEsquerdaTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblPeito)
-										.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(peitoLabel)
+										.addComponent(peitoTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblGordura)
-										.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
+										.addComponent(gorduraLabel)
+										.addComponent(percentualDeGorduraTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_1)
-						.addComponent(btnNewButton))
+						.addComponent(cancelarButton)
+						.addComponent(salvarButton))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
+		
+		
 	}
 }

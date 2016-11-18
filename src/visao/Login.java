@@ -92,17 +92,17 @@ public class Login extends JFrame{
 				if (ControleLogin.validaLogin(matricula, senha.getText()))
 				{
 					JOptionPane.showMessageDialog(null, "Logado com sucesso");
-					ControleLogin.setNivelDeAcesso(matricula);
 					setVisibilidade(false);
+					ControleLogin.realizaProcedimentosLogin(matricula);
+					/*ControleLogin.setNivelDeAcesso(matricula);
 					ControleLogin.carregaBaseDeDados();
-					ControleLogin.inicializaTelaPrincipal();
+					ControleLogin.inicializaTelaPrincipal();*/
 				}else
 					JOptionPane.showMessageDialog(null, "Problema no Login");
 			}
 		});
 
 		cancela.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);

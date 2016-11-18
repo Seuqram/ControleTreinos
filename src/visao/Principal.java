@@ -100,6 +100,15 @@ public class Principal {
 				a.pack();
 			}
 		});
+		
+		cadastrarAvaliacaoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CadastrodeAvaliacao a = new CadastrodeAvaliacao();
+				setVisibilidade(false);
+				a.setVisible(true);
+				a.pack();
+			}
+		});
 
 		JButton sairButton = new JButton("Sair");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

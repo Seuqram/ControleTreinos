@@ -6,7 +6,7 @@
     <void property="cpf">
      <int>2313</int>
     </void>
-    <void property="data_nasc">
+    <void property="dataDeNascimento">
      <string>321312</string>
     </void>
     <void property="email">
@@ -25,7 +25,7 @@
     <void property="cpf">
      <int>213123</int>
     </void>
-    <void property="data_nasc">
+    <void property="dataDeNascimento">
      <string>21321321</string>
     </void>
     <void property="email">
@@ -44,7 +44,7 @@
     <void property="cpf">
      <int>132</int>
     </void>
-    <void property="data_nasc">
+    <void property="dataDeNascimento">
      <string>3213</string>
     </void>
     <void property="email">

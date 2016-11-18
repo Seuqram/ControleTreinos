@@ -79,4 +79,22 @@ public class AlunoDAO extends Aluno implements Serializable{
 		return alunoValido;
 	}
 	
+	public static ArrayList<Aluno> getListaAlunos(){
+		carregaAlunos();
+		return listaDeAlunos;
+	}
+	
+	public static String getIdadeAluno(String nomeDoAluno){
+		carregaAlunos();
+		Aluno alunoDaLista = null;
+		for (int i = 0; i < listaDeAlunos.size(); i++){
+			alunoDaLista = listaDeAlunos.get(i);
+			if (nomeDoAluno.equals(alunoDaLista.getNome()))
+			{
+				return alunoDaLista.getDataDeNascimento();
+			}
+		}
+		return "0";
+	}
+	
 }
