@@ -6,20 +6,29 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.ControleCadastrodeAvaliacao;
+import controle.ControleCadastrodeExercicio;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class CadastrodeExercicio extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField nomeTextField;
+	private JTextField repeticoesTextField;
+	private JTextField seriesTextField;
 
 	/**
 	 * Launch the application.
@@ -52,22 +61,40 @@ public class CadastrodeExercicio extends JFrame {
 		
 		JLabel lblNome = new JLabel("Nome");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		nomeTextField = new JTextField();
+		nomeTextField.setColumns(10);
 		
 		JLabel lblSries = new JLabel("S\u00E9ries");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		repeticoesTextField = new JTextField();
+		repeticoesTextField.setColumns(10);
 		
 		JLabel lblRepeties = new JLabel("Repeti\u00E7\u00F5es");
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		seriesTextField = new JTextField();
+		seriesTextField.setColumns(10);
 		
 		JButton btnSlavar = new JButton("Salvar");
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton("Cancelar");		
+		
+		btnSlavar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(ControleCadastrodeExercicio.cadastraExercicio(nomeTextField.getText(),
+							Integer.parseInt(repeticoesTextField.getText()), 
+							Integer.parseInt(seriesTextField.getText())))
+						limpaTela();
+			}
+
+			private void limpaTela() {
+				// TODO Auto-generated method stub
+				nomeTextField.setText("");
+				repeticoesTextField.setText("");
+				seriesTextField.setText("");
+			}
+		});
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -79,8 +106,8 @@ public class CadastrodeExercicio extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(156)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(repeticoesTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(seriesTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(114)
 							.addComponent(btnSlavar)
@@ -88,7 +115,7 @@ public class CadastrodeExercicio extends JFrame {
 							.addComponent(btnCancelar))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(86)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE))
+							.addComponent(nomeTextField, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(182)
 							.addComponent(lblSries))
@@ -108,15 +135,15 @@ public class CadastrodeExercicio extends JFrame {
 					.addGap(18)
 					.addComponent(lblNome)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(nomeTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblSries)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(repeticoesTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblRepeties)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(seriesTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
