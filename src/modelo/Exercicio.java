@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class Exercicio implements Serializable{
 	
-	String nome;
-	int repeticoes, series;
+	String nome, descricao;
+	int repeticoes, serie;
 	
 	public Exercicio(){
 		
 	}
 	
-	public Exercicio(String nome, int repeticoes, int series){
-		
-		this.nome=nome;
-		this.repeticoes=repeticoes;
-		this.series=series;
-		
+	public Exercicio(String nome, String descricao, int repeticoes, int serie) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.repeticoes = repeticoes;
+		this.serie = serie;
 	}
 
 	public String getNome() {
@@ -27,6 +27,14 @@ public class Exercicio implements Serializable{
 		this.nome = nome;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public int getRepeticoes() {
 		return repeticoes;
 	}
@@ -35,12 +43,12 @@ public class Exercicio implements Serializable{
 		this.repeticoes = repeticoes;
 	}
 
-	public int getSeries() {
-		return series;
+	public int getSerie() {
+		return serie;
 	}
 
-	public void setSeries(int series) {
-		this.series = series;
+	public void setSerie(int serie) {
+		this.serie = serie;
 	}
 
 }

@@ -2,21 +2,24 @@ package modelo;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Avaliacao implements Serializable{
 	Medidas medida;
-	String nomeDoAluno, dataDeCadastro, objetivo;
-	int idade;
+	String /*nomeDoAluno, */dataDeCadastro, objetivo;
 	float peso, altura;
 	
 	public Avaliacao(){}
 	
-	public Avaliacao(Medidas medida, String objetivo, String nomeDoAluno, String dataDecadastro,
-			int idade, float peso, float altura){
+	public Avaliacao(Medidas medida, 
+					 String objetivo, 
+					 /*String nomeDoAluno, */
+					 String dataDecadastro, 
+					 float peso, 
+					 float altura){
 		this.medida = medida;
 		this.objetivo = objetivo;
-		this.nomeDoAluno = nomeDoAluno;
+		//this.nomeDoAluno = nomeDoAluno;
 		this.dataDeCadastro = dataDecadastro;
-		this.idade = idade;
 		this.peso = peso;
 		this.altura = altura;
 	}
@@ -29,13 +32,13 @@ public class Avaliacao implements Serializable{
 		this.medida = medida;
 	}
 
-	public String getNomeDoAluno() {
+	/*public String getNomeDoAluno() { 
 		return nomeDoAluno;
 	}
 
 	public void setNomeDoAluno(String nomeDoAluno) {
 		this.nomeDoAluno = nomeDoAluno;
-	}
+	}*/
 
 	public String getDataDeCadastro() {
 		return dataDeCadastro;
@@ -51,14 +54,6 @@ public class Avaliacao implements Serializable{
 
 	public void setObjetivo(String objetivo) {
 		this.objetivo = objetivo;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
 	}
 
 	public float getPeso() {

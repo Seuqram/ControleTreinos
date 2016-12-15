@@ -3,14 +3,15 @@ package controle;
 import modelo.AlunoDAO;
 
 public class ControleCadastroDeAluno {
-	public static boolean cadastrarAluno(String nome, String email, String cpf, String dataDeNascimento)
+	ControlePrincipal controlePrincipal = new ControlePrincipal();
+	public void cadastrarAluno(String nome, String email, String cpf, String dataDeNascimento)
 	{
 		AlunoDAO novoAluno = new AlunoDAO();
-		return novoAluno.cadastraAluno(nome, email, Integer.parseInt(cpf), dataDeNascimento);
+		novoAluno.cadastraAluno(nome, email, cpf, dataDeNascimento);
 	}
 	
-	public static void setVisibilidadeTelaPrincipal(boolean visibilidade)
+	public void setVisibilidadeTelaPrincipal(boolean visibilidade)
 	{
-		ControlePrincipal.setVisibilidade(visibilidade);
+		controlePrincipal.setVisibilidade(visibilidade);
 	}
 }

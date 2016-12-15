@@ -14,44 +14,22 @@ public class ExercicioDAO extends Exercicio implements Serializable {
 	public ExercicioDAO(){}
 	
 	public static void carregaExercicios(){
-		try{
-			XMLDecoder decoder = null;
-			try{
-				decoder = new XMLDecoder(
-						new FileInputStream("exercicios.xml"));
-				ArrayList<Exercicio> lista = (ArrayList<Exercicio>) decoder.readObject();
-				listaDeExercicios = lista;
-			} finally {
-				if (decoder != null)
-					decoder.close();
-			}
-		} catch (IOException e){
-			System.out.println(e.getMessage());
-		}
+		ArquivoXML<Exercicio> patati = new ArquivoXML<>("exercicios.xml");
+		patati.leXMLCliente();
+		listaDeExercicios = patati.getLista();
 	}
 	
-	public boolean cadastraExercicio(String nome, int repeticoes, int series){
+	public void cadastraExercicio(String nome, int repeticoes, int serie, String descricao){
 		carregaExercicios();
-		Exercicio novoExercicio = new Exercicio(nome, repeticoes, series);
+		Exercicio novoExercicio = new Exercicio(nome, descricao, repeticoes, serie);
 		listaDeExercicios.add(novoExercicio);
-		try{
-
-			XMLEncoder encoder = null;
-
-			try{
-
-				encoder = new XMLEncoder(new FileOutputStream("exercicios.xml"));
-				encoder.writeObject(listaDeExercicios);
-			} finally {
-				if (encoder!=null){
-					encoder.close();
-					return true;
-				}
-			}
-		} catch (IOException e){
-			System.out.println(e.getMessage());
-		}
-		return false;
+		ArquivoXML<Exercicio> patati = new ArquivoXML<>("exercicios.xml");
+		listaDeExercicios.forEach(exercicio -> patati.adiciona(exercicio));
+		patati.escreveXMLCliente();
 	}
 	
+	public ArrayList<Exercicio> getExercicios(){
+		carregaExercicios();
+		return listaDeExercicios;
+	}
 }

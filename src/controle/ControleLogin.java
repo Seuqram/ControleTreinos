@@ -1,10 +1,10 @@
 package controle;
 
 import modelo.AlunoDAO;
+import visao.PanelLogin;
+import visao.TelaPrincipal;
 
 public class ControleLogin {
-	
-	static String usuarioLogado = null;
 	
 	public static boolean validaLogin(String matricula, String senha)
 	{
@@ -29,7 +29,8 @@ public class ControleLogin {
 				break;
 			case 4:
 				//JOptionPane.showMessageDialog(null, "Aluno");
-				usuarioValido = AlunoDAO.validar(matricula, senha);
+				AlunoDAO aluno = new AlunoDAO();
+				usuarioValido = aluno.validar(matricula, senha);
 				break;
 			default:
 				return false;
@@ -40,29 +41,36 @@ public class ControleLogin {
 		return false;
 	}
 	
-	public static void realizaProcedimentosLogin(String matricula){
+	public void realizaProcedimentosLogin(String matricula){
 		setNivelDeAcesso(matricula);
 		setUsuarioLogado(matricula);
-		carregaBaseDeDados();
 		inicializaTelaPrincipal();
 	}
 	
-	public static void setUsuarioLogado(String matricula){
-		usuarioLogado = matricula;
+	public void realizaProcedimentosLogout(){
+		setNivelDeAcesso("0");
+		setUsuarioLogado(null);
+		PanelLogin login = new PanelLogin(
+				(int)(TelaPrincipal.getWidth()), 
+				(int)(TelaPrincipal.getHeight()),
+				0.5,
+				0.4);
+		TelaPrincipal.exibePanel(login, login.getPorcentagemWidth(), login.getPorcentagemHeight());
+		TelaPrincipal.setLogoutButton(false);
 	}
 	
-	public static void setNivelDeAcesso(String matricula)
-	{
-		ControleSessao.setNivelDeAcesso(Character.getNumericValue(matricula.charAt(0)));
+	public void setUsuarioLogado(String matricula){
+		ControleSessao controleSessao = new ControleSessao();
+		controleSessao.setUsuarioLogado(matricula);
 	}
 	
-	public static void inicializaTelaPrincipal()
-	{
-		ControlePrincipal.inicializaTelaPrincipal();
+	public void setNivelDeAcesso(String matricula){
+		ControleSessao controleSessao = new ControleSessao();
+		controleSessao.setNivelDeAcesso(Character.getNumericValue(matricula.charAt(0)));
 	}
 	
-	public static void carregaBaseDeDados()
-	{
-		ControleSessao.carregaBaseDeDados();
+	public void inicializaTelaPrincipal(){
+		ControlePrincipal controlePrincipal = new ControlePrincipal();
+		controlePrincipal.inicializaTelaPrincipal();
 	}
 }
