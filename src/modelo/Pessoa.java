@@ -5,7 +5,7 @@ public class Pessoa {
 	String nome;
 	String email;
 	String dataDeNascimento;
-	int cpf;
+	String cpf;
 	int matricula;
 	
 	
@@ -21,10 +21,10 @@ public class Pessoa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public String getDataDeNascimento() {
@@ -41,7 +41,7 @@ public class Pessoa {
 	}
 	
 	
-	public Pessoa(String nome, String email, int cpf, String data_nasc, int matricula) {
+	public Pessoa(String nome, String email, String cpf, String data_nasc, int matricula) {
 
 		this.nome = nome;
 		this.email = email;

@@ -3,58 +3,166 @@
  <object class="java.util.ArrayList">
   <void method="add">
    <object class="modelo.Aluno">
+    <void property="avaliacoes">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="modelo.Avaliacao">
+        <void property="altura">
+         <float>-1.11</float>
+        </void>
+        <void property="dataDeCadastro">
+         <string>09/12/2016</string>
+        </void>
+        <void property="medida">
+         <object class="modelo.Medidas">
+          <void property="bracoDireito">
+           <float>-11.11</float>
+          </void>
+          <void property="bracoEsquerdo">
+           <float>-11.11</float>
+          </void>
+          <void property="coxaDireita">
+           <float>-11.11</float>
+          </void>
+          <void property="coxaEsquerda">
+           <float>-11.11</float>
+          </void>
+          <void property="peito">
+           <float>-11.11</float>
+          </void>
+          <void property="percentualDeGordura">
+           <float>-11.11</float>
+          </void>
+         </object>
+        </void>
+        <void property="objetivo">
+         <string>Hipertrofia</string>
+        </void>
+        <void property="peso">
+         <float>-111.11</float>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="modelo.Avaliacao">
+        <void property="altura">
+         <float>1.11</float>
+        </void>
+        <void property="dataDeCadastro">
+         <string>09/12/2016</string>
+        </void>
+        <void property="medida">
+         <object class="modelo.Medidas">
+          <void property="bracoDireito">
+           <float>11.11</float>
+          </void>
+          <void property="bracoEsquerdo">
+           <float>11.11</float>
+          </void>
+          <void property="coxaDireita">
+           <float>11.11</float>
+          </void>
+          <void property="coxaEsquerda">
+           <float>11.11</float>
+          </void>
+          <void property="peito">
+           <float>11.11</float>
+          </void>
+          <void property="percentualDeGordura">
+           <float>11.11</float>
+          </void>
+         </object>
+        </void>
+        <void property="objetivo">
+         <string>Hipertrofia</string>
+        </void>
+        <void property="peso">
+         <float>111.11</float>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
     <void property="cpf">
-     <int>2313</int>
+     <string>123.456.678-90</string>
     </void>
     <void property="dataDeNascimento">
-     <string>321312</string>
+     <string>01/23/4567</string>
     </void>
     <void property="email">
-     <string>3213</string>
+     <string>patati@patata</string>
     </void>
     <void property="matricula">
      <int>41</int>
     </void>
     <void property="nome">
-     <string>dfasdfad</string>
+     <string>Patati</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
+    <void property="avaliacoes">
+     <object class="java.util.ArrayList"/>
+    </void>
     <void property="cpf">
-     <int>213123</int>
+     <string>111.111.111-11</string>
     </void>
     <void property="dataDeNascimento">
-     <string>21321321</string>
+     <string>11/11/1111</string>
     </void>
     <void property="email">
-     <string>32132131</string>
+     <string>gfdgsdfgs</string>
     </void>
     <void property="matricula">
      <int>42</int>
     </void>
     <void property="nome">
-     <string>fafdaafa</string>
+     <string>sfaasdfads</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="modelo.Aluno">
+    <void property="avaliacoes">
+     <object class="java.util.ArrayList"/>
+    </void>
     <void property="cpf">
-     <int>132</int>
+     <string>341.414.514-12</string>
     </void>
     <void property="dataDeNascimento">
-     <string>3213</string>
+     <string>42/14/1241</string>
     </void>
     <void property="email">
-     <string>231</string>
+     <string>vafdafcasd</string>
     </void>
     <void property="matricula">
      <int>43</int>
     </void>
     <void property="nome">
-     <string>kfdshfaf</string>
+     <string>fdasfasfa</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="modelo.Aluno">
+    <void property="avaliacoes">
+     <object class="java.util.ArrayList"/>
+    </void>
+    <void property="cpf">
+     <string>111.111.111-11</string>
+    </void>
+    <void property="dataDeNascimento">
+     <string>11/11/1111</string>
+    </void>
+    <void property="email">
+     <string>fvsafadsfa</string>
+    </void>
+    <void property="matricula">
+     <int>44</int>
+    </void>
+    <void property="nome">
+     <string>Patata</string>
     </void>
    </object>
   </void>

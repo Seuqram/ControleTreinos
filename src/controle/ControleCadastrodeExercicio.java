@@ -1,19 +1,13 @@
 package controle;
 
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
-import modelo.Aluno;
-import modelo.Exercicio;
 import modelo.ExercicioDAO;
-import modelo.Medidas;
 
 public class ControleCadastrodeExercicio {
 	
-	public static boolean cadastraExercicio(String nome, int repeticoes, int series) {
+	public boolean cadastraExercicio(String nome, String descricao) {
 		ExercicioDAO novoExercicio = new ExercicioDAO();
-		novoExercicio.cadastraExercicio(nome, repeticoes, series);
+		novoExercicio.cadastraExercicio(nome, 0, 0, descricao);
 		JOptionPane.showMessageDialog(null, "Exercício cadastrado com sucesso!");
 		return true;
 	}

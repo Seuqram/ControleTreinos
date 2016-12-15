@@ -2,51 +2,49 @@ package controle;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import modelo.Aluno;
 import modelo.AlunoDAO;
 import modelo.AvaliacaoDAO;
-import modelo.Pessoa;
 
 public class ControleSessao {
 	static int nivelDeAcesso = 0;
-
-	public static int getNivelDeAcesso() {
+	AlunoDAO aluno = new AlunoDAO();
+	String usuarioLogado = null;
+	public int getNivelDeAcesso() {
 		return nivelDeAcesso;
 	}
 
-	public static void setNivelDeAcesso(int nivelDeAcessoEntrado) {
+	public void setNivelDeAcesso(int nivelDeAcessoEntrado) {
 		nivelDeAcesso = nivelDeAcessoEntrado;
 	}
+	
+	public void setUsuarioLogado(String matricula){
+		usuarioLogado = matricula;
+	}
 
-	public static void carregaBaseDeDados()
+	public void carregaBaseDeDados()
 	{
 		carregaAlunos();
 		carregaFisioterapeutas();
 		carregaAvaliacoes();
 	}
 
-	public static void carregaAlunos()
+	public void carregaAlunos()
 	{
-		AlunoDAO.carregaAlunos();
+		aluno.carregaAlunos();
 	}
 
-	public static void carregaFisioterapeutas()
+	public void carregaFisioterapeutas()
 	{
 		//FisioterapeutaDAO.carregaFisioterapeutas();
 	}
 
-	public static ArrayList<Aluno> getListaDeAlunos()
+	public ArrayList<Aluno> getListaDeAlunos()
 	{
-		return AlunoDAO.getListaAlunos();
+		return aluno.getListaAlunos();
 	}
 
-	public static void carregaAvaliacoes(){
+	public void carregaAvaliacoes(){
 		AvaliacaoDAO.carregaAvaliacoes();
-	}
-	
-	public static String getIdadeAluno(String nomeDoAluno){
-		return AlunoDAO.getIdadeAluno(nomeDoAluno);
 	}
 }
